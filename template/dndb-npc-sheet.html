@@ -147,6 +147,14 @@
                 </svg>
                 <div class="actions">
                     <div id="traits-list-left">
+                        <h3>Biography</h3>
+                        {{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner editable=editable}}
+                    </div>
+                </div> <!-- actions -->
+            </div> <!-- section left -->
+            <div class="section-right">
+                <div class="actions">
+                    <div id="traits-list-right">
                         <ol class="inventory-list">
                             {{#each features as |section sid|}}
                                 {{#ifeq section.label "Features"}}
@@ -173,12 +181,6 @@
                                 {{/ifeq}}
                             {{/each}}
                         </ol>
-                    </div>
-                </div> <!-- actions -->
-            </div> <!-- section left -->
-            <div class="section-right">
-                <div class="actions">
-                    <div id="traits-list-right">
                         <ol class="inventory-list">
                             {{#each features as |section sid|}}
                                 {{#ifeq section.label "Actions"}}

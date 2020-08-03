@@ -5,8 +5,8 @@ This module adds an additional NPC sheet.
 ### Compatibility:
 - Tested with FVTT v0.6.5.
 
-### Known Issues:
--
+### Credits:
+- Based on code/design from http://tetra-cube.com/dnd/dnd-statblock.html
 
 ### Installation Instructions
 

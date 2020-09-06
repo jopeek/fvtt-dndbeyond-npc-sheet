@@ -254,8 +254,26 @@
 
                         <ol class="inventory-list">
                             {{#each spellbook as |section|}}
-                                <h3>{{section.label}}</h3>
-                            
+                                <h3>{{section.label}}
+                                <div class="spell-slots">
+                                    {{#if section.usesSlots}}
+                                    <input type="text" name="data.spells.{{section.prop}}.value" value="{{section.uses}}" placeholder="0"
+                                           data-dtype="Number"/>
+                                    <span class="sep"> / </span>
+                                    <span class="spell-max" data-level="{{section.prop}}" data-slots="{{section.slots}}">
+                                        {{{section.slots}}}
+                                        {{#if ../editable}}
+                                        <a class="slot-max-override" title="{{localize 'DND5E.SpellProgOverride'}}">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        {{/if}}
+                                    {{ else }}
+                                    <span>{{{section.uses}}}</span>
+                                    <span class="sep"> / </span>
+                                    <span class="spell-max">{{{section.slots}}}</span>
+                                    {{/if}}
+                                </div>
+                            </h3>
                                 <ol class="item-list">
                                 {{#each section.spells as |item i|}}
                                     <li class="item flexrow" data-item-id="{{item._id}}">

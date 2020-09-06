@@ -2,7 +2,7 @@
 	"name": "dndbeyond-npc-sheet",
 	"title": "DNDBeyond NPC Sheet",
 	"description": "This module adds an additional NPC sheet with a clean interface reminiscent of DNDBeyond npc stat blocks.",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"minimumCoreVersion": "0.6.5",
 	"compatibleCoreVersion": "0.6.6",
 	"author": "Jan Ole Peek (ChalkOne)",

@@ -35,31 +35,13 @@
                     <svg height="5" width="100%" class="tapered-rule">
                         <polyline points="0,0 400,2.5 0,5"></polyline>
                     </svg>
-                    <div class="scores">
-                        <div class="scores-strength">
-                            <h4 class="ability-name rollable" data-ability="str">STR</h4>
-                            <p id="strpts">{{data.abilities.str.value}} ({{numberFormat data.abilities.str.mod decimals=0 sign=true}})</p>
-                        </div> <!-- scores strength -->
-                        <div class="scores-dexterity">
-                            <h4 class="ability-name rollable" data-ability="dex">DEX</h4>
-                            <p id="dexpts">{{data.abilities.dex.value}} ({{numberFormat data.abilities.dex.mod decimals=0 sign=true}})</p>
-                        </div> <!-- scores dexterity -->
-                        <div class="scores-constitution">
-                            <h4 class="ability-name rollable" data-ability="con">CON</h4>
-                            <p id="conpts">{{data.abilities.con.value}} ({{numberFormat data.abilities.con.mod decimals=0 sign=true}})</p>
-                        </div> <!-- scores constitution -->
-                        <div class="scores-intelligence">
-                            <h4 class="ability-name rollable" data-ability="int">INT</h4>
-                            <p id="intpts">{{data.abilities.int.value}} ({{numberFormat data.abilities.int.mod decimals=0 sign=true}})</p>
-                        </div> <!-- scores intelligence -->
-                        <div class="scores-wisdom">
-                            <h4 class="ability-name rollable" data-ability="wis">WIS</h4>
-                            <p id="wispts">{{data.abilities.wis.value}} ({{numberFormat data.abilities.wis.mod decimals=0 sign=true}})</p>
-                        </div> <!-- scores wisdom -->
-                        <div class="scores-charisma">
-                            <h4 class="ability-name rollable" data-ability="cha">CHA</h4>
-                            <p id="chapts">{{data.abilities.cha.value}} ({{numberFormat data.abilities.cha.mod decimals=0 sign=true}})</p>
-                        </div> <!-- scores charisma -->
+                    <div class="scores" data-tab="attributes">
+                        {{#each data.abilities as |ability id|}}
+                            <div class="ability" data-ability="{{id}}">
+                                <h4 class="ability-name rollable">{{id}}</h4>
+                                <p>{{ability.value}} ({{numberFormat ability.mod decimals=0 sign=true}})</p>
+                            </div>
+                        {{/each}}
                     </div> <!-- scores -->
                     <svg height="5" width="100%" class="tapered-rule">
                         <polyline points="0,0 400,2.5 0,5"></polyline>

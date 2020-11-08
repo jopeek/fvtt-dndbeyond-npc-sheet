@@ -579,4 +579,38 @@ unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+
     float: right;
     position: inherit;
     padding-right: 0;
+    border-right: 0px;
+}
+
+.dndb-npc-sheet.sheet .items-list .item .item-name .item-image {
+    flex: 0 0 30px;
+    height: 30px;
+    background-size: 30px;
+    border: none;
+    margin-right: 5px;
+}
+
+.dndb-npc-sheet.sheet .items-list .item .item-name h4 {
+    overflow-x: initial;
+}
+
+.dndb-npc-sheet.sheet .effects {
+    margin-left: 0px;
+}
+
+.dndb-npc-sheet.sheet .items-list .items-header .item-name {
+    padding: 0 0 10px;
+    font-size: 21px;
+    font-weight: normal;
+    margin: 20px 0 0;
+    background: none;
+}
+
+.dndb-npc-sheet.sheet .effect-temporary:first-of-type, .dndb-npc-sheet.sheet .effect-passive:first-of-type, .dndb-npc-sheet.sheet .effect-inactive:first-of-type {
+    display: list-item !important;
+}
+
+.dndb-npc-sheet.sheet span.effect-details {
+    font-size: 12px;
+    color: #7a7971;
 }

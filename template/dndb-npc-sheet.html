@@ -49,7 +49,7 @@
                     <div id="properties-list">
                         <div class="property-line first">
                             <div>
-                                <h4>{{localize "DND5E.Skills"}}</h4> 
+                                <h4>Skills</h4> 
                                 <p>
                                     {{#each data.skills as |skill s|}}
                                     <li class="skill flexrow {{#if skill.value}}proficient{{/if}}" data-skill="{{s}}">
@@ -136,13 +136,32 @@
             </div> <!-- section left -->
             <div class="section-right">
                 <div class="actions">
-                    <div id="traits-list-right">
+                    <div id="traits-list-right"> 
+                        <ol class="items-list effects-list">
+                            {{#each effects as |section sid|}}
+                                
+                            
+                                <ol class="item-list">
+                                {{#each section.effects as |effect|}}
+                                    <li data-effect-type="{{section.type}}" class="effect-{{localize section.type}}" style="display: none;">
+                                        <h3>{{localize section.label}}</h3>
+                                    </li>
+                                    <li class="item effect flexrow" data-effect-id="{{effect.id}}">
+                                        <div class="item-name effect-name flexrow">
+                                            <img class="item-image" src="{{effect.data.icon}}"/>
+                                            <h4>{{effect.data.label}} <span class="effect-details">(<i class="far fa-dot-circle" title="Source"></i> {{effect.sourceName}} - <i class="far fa-clock" title="Duration"></i> {{effect.duration.label}})</span></h4>
+                                        </div>
+                                    </li>
+                                {{/each}}
+                                </ol>
+                            {{/each}}
+                        </ol>
                         <ol class="inventory-list">
                             {{#each features as |section sid|}}
                                 {{#ifeq section.label "Features"}}
                                     <h3>{{localize section.label}}</h3>
                             
-                                    <ol class="item-list">
+                                    <ol class="items-list">
                                         {{#each section.items as |item iid|}}
                                             <li class="item flexrow {{#if isDepleted}}depleted{{/if}}" data-item-id="{{item._id}}">
                                                 <div class="item-name flexrow rollable">
@@ -168,7 +187,7 @@
                                 {{#ifeq section.label "Actions"}}
                                     <h3>{{localize section.label}}</h3>
                             
-                                    <ol class="item-list">
+                                    <ol class="items-list">
                                         {{#each section.items as |item iid|}}
                                             <li class="item flexrow {{#if isDepleted}}depleted{{/if}}" data-item-id="{{item._id}}">
                                                 <div class="item-name flexrow rollable">
@@ -190,7 +209,7 @@
                                 {{#ifeq section.label "Attacks"}}
                                     <h3>{{localize section.label}}</h3>
                             
-                                    <ol class="item-list">
+                                    <ol class="items-list">
                                         {{#each section.items as |item iid|}}
                                             <li class="item flexrow {{#if isDepleted}}depleted{{/if}}" data-item-id="{{item._id}}">
                                                 <div class="item-name flexrow rollable">
@@ -212,7 +231,7 @@
                                 {{#ifeq section.label "Inventory"}}
                                     <h3>{{localize section.label}}</h3>
                             
-                                    <ol class="item-list">
+                                    <ol class="items-list">
                                         {{#each section.items as |item iid|}}
                                             <li class="item flexrow {{#if isDepleted}}depleted{{/if}}" data-item-id="{{item._id}}">
                                                 <div class="item-name flexrow rollable">
@@ -256,7 +275,7 @@
                                     {{/if}}
                                 </div>
                             </h3>
-                                <ol class="item-list">
+                                <ol class="items-list">
                                 {{#each section.spells as |item i|}}
                                     <li class="item flexrow" data-item-id="{{item._id}}">
                                         <div class="item-name flexrow rollable">

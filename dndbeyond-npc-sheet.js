@@ -36,11 +36,29 @@ class DNDBeyondNPCSheet extends ActorSheet5eNPC {
 
 }
 
-//Register the loot sheet
-Actors.registerSheet("dnd5e", DNDBeyondNPCSheet, {
-    types: ["npc"],
-    makeDefault: false
-});
+Hooks.once('init', async function () {
+
+    Handlebars.registerHelper('ifeq', function (a, b, options) {
+        if (a == b) { return options.fn(this); }
+        return options.inverse(this);
+    });
+    
+    Handlebars.registerHelper('ifnoteq', function (a, b, options) {
+        if (a != b) { return options.fn(this); }
+        return options.inverse(this);
+    });
+    
+    console.log("DNDBeyondNPCSheet | Loaded");
+  
+    //Register the loot sheet
+    Actors.registerSheet("dnd5e", DNDBeyondNPCSheet, {
+        types: ["npc"],
+        makeDefault: false
+    });
+    
+  });
+
+
 
 Hooks.on('ready', () => {
     try {

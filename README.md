@@ -1,3 +1,4 @@
+[![Github All Releases](https://img.shields.io/github/downloads/jopeek/fvtt-dndbeyond-npc-sheet/total.svg)]() [![Donate](https://img.shields.io/badge/Donate-BuyMeACoffee-green.svg)](https://www.buymeacoffee.com/ChalkOne)
 # DND Beyond NPC Sheet
 
 This module adds an additional NPC sheet.

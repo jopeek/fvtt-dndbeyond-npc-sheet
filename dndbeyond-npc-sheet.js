@@ -26,7 +26,7 @@ class DNDBeyondNPCSheet extends ActorSheet5eNPC {
         if (game.user.isGM) sheetData.isGM = true;
         else sheetData.isGM = false;
 
-        console.log(sheetData);
+        //console.log(sheetData);
         return sheetData;
     }
 
@@ -48,7 +48,7 @@ Hooks.once('init', async function () {
         return options.inverse(this);
     });
     
-    console.log("DNDBeyondNPCSheet | Loaded");
+    //console.log("DNDBeyondNPCSheet | Loaded");
   
     //Register the loot sheet
     Actors.registerSheet("dnd5e", DNDBeyondNPCSheet, {

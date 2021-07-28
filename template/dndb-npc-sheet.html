@@ -9,7 +9,7 @@
                     <div class="creature-heading-left"><img class="profile" src="{{actor.img}}" title="{{actor.name}}" data-edit="img"/></div>
                     <div class="creature-heading-right">
                         <h1 id="monster-name"><input name="name" type="text" value="{{actor.name}}" placeholder="{{ localize 'DND5E.Name' }}"/></h1>
-                        <h2 id="monster-type">{{lookup config.actorSizes data.traits.size}}, {{data.details.type}}, {{data.details.alignment}}, {{data.details.source}}</h2>
+                        <h2 id="monster-type">{{lookup config.actorSizes data.traits.size}}, {{data.details.type.value}}, {{data.details.alignment}}, {{data.details.source}}</h2>
                         <svg height="5" width="100%" class="tapered-rule">
                             <polyline points="0,0 400,2.5 0,5"></polyline>
                         </svg>
@@ -103,7 +103,11 @@
                         <div class="property-line">
                             <div>
                                 <h4>{{localize "DND5E.Senses"}}</h4> 
-                                <p>{{data.attributes.senses}}</p>
+                                <p>
+                                    {{#each data.attributes.senses as |v k|}}
+                                        {{k}} {{v}} 
+                                    {{/each}}
+                                </p>
                             </div>
                         </div>
                         <div class="property-line">

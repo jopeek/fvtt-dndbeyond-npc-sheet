@@ -617,3 +617,9 @@
         font-size: 12px;
         color: #7a7971;
     }
+
+    .dndb-npc-sheet.sheet.actor .config-button {
+        color: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+    }

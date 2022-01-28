@@ -545,7 +545,8 @@
     }
     
     .dndb-npc-sheet .creature-heading-left {
-        width: 100px;
+        width: 100px !important;
+        min-width: 100px !important;
         margin: 10px 10px 0 0;
     }
     

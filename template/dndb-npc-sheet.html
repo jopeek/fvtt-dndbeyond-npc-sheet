@@ -9,17 +9,17 @@
                     <div class="creature-heading-left"><img class="profile" src="{{actor.img}}" title="{{actor.name}}" data-edit="img"/></div>
                     <div class="creature-heading-right">
                         <h1 id="monster-name"><input name="name" type="text" value="{{actor.name}}" placeholder="{{ localize 'DND5E.Name' }}"/></h1>
-                        <h2 id="monster-type">{{lookup config.actorSizes data.traits.size}}, {{data.details.type.value}}, {{data.details.alignment}}, {{data.details.source}}</h2>
+                        <h2 id="monster-type">{{lookup config.actorSizes system.traits.size}}, {{labels.type}}, {{system.details.alignment}}, {{system.details.source}}</h2>
                         <svg height="5" width="100%" class="tapered-rule">
                             <polyline points="0,0 400,2.5 0,5"></polyline>
                         </svg>
                         <div class="property-line first">
                             <h4>{{localize "DND5E.ArmorClass"}}</h4>
-                            <p id="armor-class">{{data.attributes.ac.value}}</p>
+                            <p id="armor-class">{{system.attributes.ac.value}}</p>
                         </div> <!-- property line -->
                         <div class="property-line">
                             <h4>{{localize "DND5E.HitPoints"}}</h4>
-                            <p id="hit-points">{{data.attributes.hp.value}} / {{data.attributes.hp.max}} ({{data.attributes.hp.formula}})</p>
+                            <p id="hit-points">{{system.attributes.hp.value}} / {{system.attributes.hp.max}} ({{system.attributes.hp.formula}})</p>
                         </div> <!-- property line -->
                         <div class="property-line">
                             <h4><a class="config-button" data-action="movement" title="{{localize 'DND5E.MovementConfig'}}">{{ localize "DND5E.Speed" }}</a></h4>
@@ -36,7 +36,7 @@
                         <polyline points="0,0 400,2.5 0,5"></polyline>
                     </svg>
                     <div class="scores" data-tab="attributes">
-                        {{#each data.abilities as |ability id|}}
+                        {{#each system.abilities as |ability id|}}
                             <div class="ability" data-ability="{{id}}">
                                 <h4 class="ability-name rollable">{{id}}</h4>
                                 <p>{{ability.value}} ({{numberFormat ability.mod decimals=0 sign=true}})</p>
@@ -51,7 +51,7 @@
                             <div>
                                 <h4>Skills</h4> 
                                 <p>
-                                    {{#each data.skills as |skill s|}}
+                                    {{#each system.skills as |skill s|}}
                                     <li class="skill flexrow {{#if skill.value}}proficient{{/if}}" data-skill="{{s}}">
                                         <span class="skill-name rollable">{{skill.label}}</span> (<span class="skill-mod">{{numberFormat skill.total decimals=0 sign=true}}</span>) 
                                     </li>
@@ -63,7 +63,7 @@
                             <div>
                                 <h4>{{localize "DND5E.DamImm"}}</h4> 
                                 <p>
-                                    {{#each data.traits.di.selected as |v k|}}
+                                    {{#each system.traits.di.selected as |v k|}}
                                         {{v}} 
                                     {{/each}}
                                 </p>
@@ -74,7 +74,7 @@
                             <div>
                                 <h4>{{localize "DND5E.DamRes"}}</h4> 
                                 <p>
-                                    {{#each data.traits.dr.selected as |v k|}}
+                                    {{#each system.traits.dr.selected as |v k|}}
                                         {{v}} 
                                     {{/each}}
                                 </p>
@@ -84,7 +84,7 @@
                             <div>
                                 <h4>{{localize "DND5E.DamVuln"}}</h4> 
                                 <p>
-                                    {{#each data.traits.dv.selected as |v k|}}
+                                    {{#each system.traits.dv.selected as |v k|}}
                                         {{v}} 
                                     {{/each}}
                                 </p>
@@ -94,7 +94,7 @@
                             <div>
                                 <h4>{{localize "DND5E.ConImm"}}</h4> 
                                 <p>
-                                    {{#each data.traits.ci.selected as |v k|}}
+                                    {{#each system.traits.ci.selected as |v k|}}
                                         {{v}} 
                                     {{/each}}
                                 </p>
@@ -104,7 +104,7 @@
                             <div>
                                 <h4>{{localize "DND5E.Senses"}}</h4> 
                                 <p>
-                                    {{#each data.attributes.senses as |v k|}}
+                                    {{#each system.attributes.senses as |v k|}}
                                         {{k}} {{v}} 
                                     {{/each}}
                                 </p>
@@ -114,7 +114,7 @@
                             <div>
                                 <h4>{{localize "DND5E.Languages"}}</h4> 
                                 <p>
-                                    {{#each data.traits.languages.selected as |v k|}}
+                                    {{#each system.traits.languages.selected as |v k|}}
                                         {{v}} 
                                     {{/each}}
                                 </p>
@@ -123,7 +123,7 @@
                         <div class="property-line last">
                             <div>
                                 <h4>Challenge</h4>
-                                <p id="challenge-rating">{{labels.cr}} ({{data.details.xp.value}} XP)</p>
+                                <p id="challenge-rating">{{labels.cr}} ({{system.details.xp.value}} XP)</p>
                             </div>
                         </div> <!-- property line -->
                     </div>
@@ -134,7 +134,7 @@
                 <div class="actions">
                     <div id="traits-list-left">
                         <h3>Biography</h3>
-                        {{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner editable=editable}}
+                        {{editor content=system.details.biography.value target="system.details.biography.value" button=true owner=owner editable=editable}}
                     </div>
                 </div> <!-- actions -->
             </div> <!-- section left -->
@@ -152,8 +152,8 @@
                                     </li>
                                     <li class="item effect flexrow" data-effect-id="{{effect.id}}">
                                         <div class="item-name effect-name flexrow">
-                                            <img class="item-image" src="{{effect.data.icon}}"/>
-                                            <h4>{{effect.data.label}} <span class="effect-details">(<i class="far fa-dot-circle" title="Source"></i> {{effect.sourceName}} - <i class="far fa-clock" title="Duration"></i> {{effect.duration.label}})</span></h4>
+                                            <img class="item-image" src="{{effect.system.icon}}"/>
+                                            <h4>{{effect.system.label}} <span class="effect-details">(<i class="far fa-dot-circle" title="Source"></i> {{effect.sourceName}} - <i class="far fa-clock" title="Duration"></i> {{effect.duration.label}})</span></h4>
                                         </div>
                                     </li>
                                 {{/each}}
@@ -262,7 +262,7 @@
                                 <h3>{{section.label}}
                                 <div class="spell-slots">
                                     {{#if section.usesSlots}}
-                                    <input type="text" name="data.spells.{{section.prop}}.value" value="{{section.uses}}" placeholder="0"
+                                    <input type="text" name="system.spells.{{section.prop}}.value" value="{{section.uses}}" placeholder="0"
                                            data-dtype="Number"/>
                                     <span class="sep"> / </span>
                                     <span class="spell-max" data-level="{{section.prop}}" data-slots="{{section.slots}}">
@@ -285,8 +285,8 @@
                                         <div class="item-name flexrow rollable">
                                             <div class="item-image" style="background-image: url({{item.img}})"></div>
                                             <h4>{{item.name}}</h4>
-                                            {{#if item.data.uses.per }}
-                                            <div class="item-detail spell-uses">Uses {{item.data.uses.value}} / {{item.data.uses.max}}</div>
+                                            {{#if item.system.uses.per }}
+                                            <div class="item-detail spell-uses">Uses {{item.system.uses.value}} / {{item.system.uses.max}}</div>
                                             {{/if}}
                                         </div>
                             

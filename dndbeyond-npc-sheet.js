@@ -1,6 +1,4 @@
-import ActorSheet5eNPC from "../../systems/dnd5e/module/actor/sheets/npc.js";
-
-class DNDBeyondNPCSheet extends ActorSheet5eNPC {
+class DNDBeyondNPCSheet extends dnd5e.applications.actor.ActorSheet5eNPC {
 
     get template() {
         
@@ -26,7 +24,6 @@ class DNDBeyondNPCSheet extends ActorSheet5eNPC {
         if (game.user.isGM) sheetData.isGM = true;
         else sheetData.isGM = false;
 
-        //console.log(sheetData);
         return sheetData;
     }
 

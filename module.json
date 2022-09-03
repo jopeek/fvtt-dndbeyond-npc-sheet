@@ -1,28 +1,17 @@
 {
-  "name": "dndbeyond-npc-sheet",
   "title": "DNDBeyond NPC Sheet",
   "description": "This module adds an additional NPC sheet with a clean interface reminiscent of DNDBeyond npc stat blocks.",
-  "author": "Jan Ole Peek (ChalkOne)",
-  "authors": [],
   "url": "https://github.com/jopeek/fvtt-dndbeyond-npc-sheet",
-  "flags": {},
-  "version": "1.3.6",
-  "minimumCoreVersion": "0.7.7",
-  "compatibleCoreVersion": "9",
-  "scripts": [],
+  "version": "1.4.1",
+  "minimumCoreVersion": "10",
+  "compatibleCoreVersion": "10",
   "esmodules": [
     "/dndbeyond-npc-sheet.js"
   ],
   "styles": [
     "/css/dndbeyond-npc-sheet.css"
   ],
-  "languages": [],
-  "packs": [],
-  "system": [],
-  "dependencies": [],
-  "socket": false,
   "manifest": "https://raw.githubusercontent.com/jopeek/fvtt-dndbeyond-npc-sheet/master/module.json",
   "download": "https://github.com/jopeek/fvtt-dndbeyond-npc-sheet/archive/master.zip",
-  "protected": false,
-  "coreTranslation": false
+  "id": "dndbeyond-npc-sheet"
 }

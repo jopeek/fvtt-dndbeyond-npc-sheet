@@ -3,7 +3,7 @@ class DNDBeyondNPCSheet extends dnd5e.applications.actor.ActorSheet5eNPC {
     get template() {
         
         const path = "systems/dnd5e/templates/actors/";
-        if (!game.user.isGM && this.actor.limited) return path + "limited-sheet.html";
+        if (!game.user.isGM && this.actor.limited) return path + "limited-sheet.hbs";
         return "modules/dndbeyond-npc-sheet/template/dndb-npc-sheet.html";
     }
 

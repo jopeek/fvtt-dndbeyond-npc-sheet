@@ -51,10 +51,12 @@
                             <div>
                                 <h4>Skills</h4> 
                                 <p>
-                                    {{#each system.skills as |skill s|}}
+                                    {{#each config.skills as |obj s|}}
+                                    {{#with (lookup ../skills s) as |skill|}}
                                     <li class="skill flexrow {{#if skill.value}}proficient{{/if}}" data-skill="{{s}}">
                                         <span class="skill-name rollable">{{skill.label}}</span> (<span class="skill-mod">{{numberFormat skill.total decimals=0 sign=true}}</span>) 
                                     </li>
+                                    {{/with}}
                                     {{/each}}
                                 </p>
                             </div>

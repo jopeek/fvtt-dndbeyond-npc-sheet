@@ -49,6 +49,18 @@
                     <div id="properties-list">
                         <div class="property-line first">
                             <div>
+                                <h4>Saving Throws</h4> 
+                                <p>
+                                    {{#each abilities as |ability id|}}
+                                    <li class="skill flexrow {{#if skill.value}}proficient{{/if}}" data-skill="{{s}}">
+                                        <span class="ability-name ability-mod rollable">{{ability.label}}</span> (<span class="skill-mod ability-save">{{numberFormat ability.save decimals=0 sign=true}}</span>) 
+                                    </li>
+                                    {{/each}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="property-line first">
+                            <div>
                                 <h4>Skills</h4> 
                                 <p>
                                     {{#each config.skills as |obj s|}}

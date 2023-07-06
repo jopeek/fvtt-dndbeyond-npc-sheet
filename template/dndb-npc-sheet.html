@@ -14,11 +14,11 @@
                             <polyline points="0,0 400,2.5 0,5"></polyline>
                         </svg>
                         <div class="property-line first">
-                            <h4>{{localize "DND5E.ArmorClass"}}</h4>
+                            <h4><a class="config-button" data-action="armor" title="{{localize 'DND5E.ArmorConfig'}}">{{ localize "DND5E.ArmorClass" }}</a></h4>
                             <p id="armor-class">{{system.attributes.ac.value}}</p>
                         </div> <!-- property line -->
                         <div class="property-line">
-                            <h4>{{localize "DND5E.HitPoints"}}</h4>
+                            <h4><a class="config-button" data-action="hit-points" title="{{localize 'DND5E.HitPointsConfig'}}">{{ localize "DND5E.HitPoints" }}</a></h4>
                             <p id="hit-points">{{system.attributes.hp.value}} / {{system.attributes.hp.max}} ({{system.attributes.hp.formula}})</p>
                         </div> <!-- property line -->
                         <div class="property-line">
@@ -65,8 +65,9 @@
                                 <p>
                                     {{#each config.skills as |obj s|}}
                                     {{#with (lookup ../skills s) as |skill|}}
-                                    <li class="skill flexrow {{#if skill.value}}proficient{{/if}}" data-skill="{{s}}">
-                                        <span class="skill-name rollable">{{skill.label}}</span> (<span class="skill-mod">{{numberFormat skill.total decimals=0 sign=true}}</span>) 
+                                    <li class="skill proficiency-row flexrow {{#if skill.value}}proficient{{/if}}" data-property="skills"
+                                    data-key="{{s}}">
+                                        <span class="skill-name rollable">{{skill.label}}</span> (<span class="skill-mod" data-tooltip="{{localize 'DND5E.SkillModifierHint' skill=skill.label}}">{{numberFormat skill.total decimals=0 sign=true}}</span>) 
                                     </li>
                                     {{/with}}
                                     {{/each}}
@@ -75,9 +76,12 @@
                         </div>
                         <div class="property-line">
                             <div>
-                                <h4>{{localize "DND5E.DamImm"}}</h4> 
+                                <h4><a class="trait-selector" data-trait="di"
+                                    data-tooltip="{{localize 'DND5E.TraitConfig' trait=(localize 'DND5E.DamImm')}}" tabindex="0">
+                                    {{localize "DND5E.DamImm"}}
+                                 </a></h4> 
                                 <p>
-                                    {{#each system.traits.di.selected as |v k|}}
+                                    {{#each traits.traits.di.selected as |v k|}}
                                         {{v}} 
                                     {{/each}}
                                 </p>
@@ -86,9 +90,12 @@
 
                         <div class="property-line">
                             <div>
-                                <h4>{{localize "DND5E.DamRes"}}</h4> 
+                                <h4><a class="trait-selector" data-trait="dr"
+                                    data-tooltip="{{localize 'DND5E.TraitConfig' trait=(localize 'DND5E.DamRes')}}" tabindex="0">
+                                    {{localize "DND5E.DamRes"}}
+                                 </a></h4> 
                                 <p>
-                                    {{#each system.traits.dr.selected as |v k|}}
+                                    {{#each traits.traits.dr.selected as |v k|}}
                                         {{v}} 
                                     {{/each}}
                                 </p>
@@ -96,9 +103,12 @@
                         </div>
                         <div class="property-line">
                             <div>
-                                <h4>{{localize "DND5E.DamVuln"}}</h4> 
+                                <h4><a class="trait-selector" data-trait="dv"
+                                    data-tooltip="{{localize 'DND5E.TraitConfig' trait=(localize 'DND5E.DamVuln')}}">
+                                    {{localize "DND5E.DamVuln"}}
+                                 </a></h4> 
                                 <p>
-                                    {{#each system.traits.dv.selected as |v k|}}
+                                    {{#each traits.traits.dv.selected as |v k|}}
                                         {{v}} 
                                     {{/each}}
                                 </p>
@@ -106,9 +116,12 @@
                         </div>
                         <div class="property-line">
                             <div>
-                                <h4>{{localize "DND5E.ConImm"}}</h4> 
+                                <h4><a class="trait-selector" data-trait="ci"
+                                    data-tooltip="{{localize 'DND5E.TraitConfig' trait=(localize 'DND5E.ConImm')}}">
+                                    {{localize "DND5E.ConImm"}}
+                                 </a></h4> 
                                 <p>
-                                    {{#each system.traits.ci.selected as |v k|}}
+                                    {{#each traits.traits.ci.selected as |v k|}}
                                         {{v}} 
                                     {{/each}}
                                 </p>
@@ -116,7 +129,9 @@
                         </div>
                         <div class="property-line">
                             <div>
-                                <h4>{{localize "DND5E.Senses"}}</h4> 
+                                <h4><a class="config-button" data-action="senses" data-tooltip="DND5E.SensesConfig">
+                                    {{localize "DND5E.Senses"}}
+                                </a></h4> 
                                 <p>
                                     {{#each system.attributes.senses as |v k|}}
                                         {{k}} {{v}} 
@@ -126,9 +141,12 @@
                         </div>
                         <div class="property-line">
                             <div>
-                                <h4>{{localize "DND5E.Languages"}}</h4> 
+                                <h4><a class="trait-selector" data-trait="languages"
+                                    data-tooltip="{{localize 'DND5E.TraitConfig' trait=(localize 'DND5E.Languages')}}" tabindex="0">
+                                    {{localize "DND5E.Languages"}}
+                                 </a></h4> 
                                 <p>
-                                    {{#each system.traits.languages.selected as |v k|}}
+                                    {{#each traits.traits.languages.selected as |v k|}}
                                         {{v}} 
                                     {{/each}}
                                 </p>

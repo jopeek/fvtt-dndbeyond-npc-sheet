@@ -2,7 +2,7 @@
   "title": "DNDBeyond NPC Sheet",
   "description": "This module adds an additional NPC sheet with a clean interface reminiscent of DNDBeyond npc stat blocks.",
   "url": "https://github.com/jopeek/fvtt-dndbeyond-npc-sheet",
-  "version": "1.4.4",
+  "version": "1.5.0",
   "authors": [
     {
       "name": "Jan Ole Peek (ChalkOne)",
@@ -11,7 +11,7 @@
   ],
   "compatibility": {
     "minimum": "10",
-    "verified": "10.291",
+    "verified": "10.303",
     "maximum": "10"
   },
   "esmodules": [

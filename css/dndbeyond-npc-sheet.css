@@ -469,11 +469,11 @@
     .dndb-npc-sheet .actions h3 {
         border-bottom: 2px solid #7A200D;
         color: #7A200D;
-        font-size: 21px;
+        font-size: 21px !important;
         font-variant: small-caps;
         font-weight: normal;
         letter-spacing: 1px;
-        margin: 20px 0 0;
+        margin: 20px 0 0 !important;
         padding: 0 0 10px;
         text-indent: 5px;
     }
@@ -556,12 +556,18 @@
         margin-bottom: 5px;
     }
     
-    .dndb-npc-sheet.sheet.actor .inventory-list .item-controls {
+    .dndb-npc-sheet.sheet.actor .inventory-list .item-controls,
+    .dndb-npc-sheet.sheet.actor .effects-list .item-controls {
         opacity: 0;
         flex: 0 0 30px;
     }
+
+    .dndb-npc-sheet.sheet.actor .effects-list .item-controls {
+        flex: 0 0 40px;
+    }
     
-    .dndb-npc-sheet.sheet.actor .inventory-list .item:hover .item-controls {
+    .dndb-npc-sheet.sheet.actor .inventory-list .item:hover .item-controls,
+    .dndb-npc-sheet.sheet.actor .effects-list .item:hover .item-controls {
         opacity: 1;
     }
     
@@ -578,6 +584,10 @@
         bottom: 20px;
         width: 100%;
         padding: 0px;
+    }
+
+    .dndb-npc-sheet.sheet .effects-list .flexrow {
+        justify-content: space-between;
     }
     
     .dndb-npc-sheet.sheet.actor .spell-slots {

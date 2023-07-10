@@ -175,27 +175,72 @@
                     <div id="traits-list-right"> 
                         <ol class="items-list effects-list">
                             {{#each effects as |section sid|}}
-                                
+                            {{#unless section.hidden}}
+                                <li class="flexrow" data-effect-type="{{section.type}}">
+                                    <h3 class="item-name effect-name flexrow">
+                                        {{localize section.label}}
+                                        {{#if @root.editable}}
+                                        <div class="spell-slots">
+                                            <a class="effect-control" data-action="create" data-tooltip="DND5E.EffectCreate">
+                                                <i class="fas fa-plus"></i> {{localize "DND5E.Add"}}
+                                            </a>
+                                        </div>
+                                        {{/if}}
+                                    </h3>
+                                </li>
+                            
+                                {{#if section.info}}
+                                    <ol class="info">
+                                    {{#each section.info}}
+                                        <li class="notification info">{{this}}</li>
+                                    {{/each}}
+                                    </ol>
+                                {{/if}}
                             
                                 <ol class="item-list">
                                 {{#each section.effects as |effect|}}
-                                    <li data-effect-type="{{section.type}}" class="effect-{{localize section.type}}" style="display: none;">
-                                        <h3>{{localize section.label}}</h3>
-                                    </li>
                                     <li class="item effect flexrow" data-effect-id="{{effect.id}}">
                                         <div class="item-name effect-name flexrow">
-                                            <img class="item-image" src="{{effect.system.icon}}"/>
-                                            <h4>{{effect.system.label}} <span class="effect-details">(<i class="far fa-dot-circle" title="Source"></i> {{effect.sourceName}} - <i class="far fa-clock" title="Duration"></i> {{effect.duration.label}})</span></h4>
+                                            <img class="item-image" src="{{effect.icon}}"/>
+                                            <h4>{{effect.label}}</h4>
+                                        </div>
+                                        <div class="effect-source">{{effect.sourceName}}</div>
+                                        <div class="effect-duration">{{effect.duration.label}}</div>
+                                        <div class="item-controls effect-controls flexrow">
+                                            {{#if @root.editable}}
+                                            <a class="effect-control" data-action="toggle"
+                                               data-tooltip="{{#if effect.disabled}}DND5E.EffectEnable{{else}}DND5E.EffectDisable{{/if}}">
+                                                <i class="fas {{#if effect.disabled}}fa-check{{else}}fa-times{{/if}}"></i>
+                                            </a>
+                                            <a class="effect-control" data-action="edit" data-tooltip="DND5E.EffectEdit">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a class="effect-control" data-action="delete" data-tooltip="DND5E.EffectDelete">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                            {{/if}}
                                         </div>
                                     </li>
                                 {{/each}}
                                 </ol>
+                            {{/unless}}
                             {{/each}}
-                        </ol>
+                            </ol>
+                            
                         <ol class="inventory-list">
                             {{#each features as |section sid|}}
                                 {{#ifeq section.label "Features"}}
-                                    <h3>{{localize section.label}}</h3>
+                                    <h3>
+                                        {{localize section.label}}
+                                        {{#if ../owner}}
+                                        <div class="spell-slots">
+                                            <a class="item-control item-create" data-tooltip="DND5E.FeatureAdd"
+                                                {{#each section.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
+                                                <i class="fas fa-plus"></i> {{localize "DND5E.Add"}}
+                                            </a>
+                                        </div>
+                                        {{/if}}
+                                    </h3>
                             
                                     <ol class="items-list">
                                         {{#each section.items as |item iid|}}
@@ -221,7 +266,17 @@
                         <ol class="inventory-list">
                             {{#each features as |section sid|}}
                                 {{#ifeq section.label "Actions"}}
-                                    <h3>{{localize section.label}}</h3>
+                                    <h3>
+                                        {{localize section.label}}
+                                        {{#if ../owner}}
+                                        <div class="spell-slots">
+                                            <a class="item-control item-create" data-tooltip="DND5E.FeatureAdd"
+                                                {{#each section.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
+                                                <i class="fas fa-plus"></i> {{localize "DND5E.Add"}}
+                                            </a>
+                                        </div>
+                                        {{/if}}
+                                    </h3>
                             
                                     <ol class="items-list">
                                         {{#each section.items as |item iid|}}
@@ -243,7 +298,17 @@
                                 
                                 {{/ifeq}}
                                 {{#ifeq section.label "Attacks"}}
-                                    <h3>{{localize section.label}}</h3>
+                                    <h3>
+                                        {{localize section.label}}
+                                        {{#if ../owner}}
+                                        <div class="spell-slots">
+                                            <a class="item-control item-create" data-tooltip="DND5E.FeatureAdd"
+                                                {{#each section.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
+                                                <i class="fas fa-plus"></i> {{localize "DND5E.Add"}}
+                                            </a>
+                                        </div>
+                                        {{/if}}
+                                    </h3>
                             
                                     <ol class="items-list">
                                         {{#each section.items as |item iid|}}
@@ -309,6 +374,12 @@
                                     <span class="sep"> / </span>
                                     <span class="spell-max">{{{section.slots}}}</span>
                                     {{/if}}
+                                    {{#if section.canCreate}}
+                                    <a class="item-control item-create" data-tooltip="DND5E.SpellCreate"
+                                        {{#each section.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
+                                        <i class="fas fa-plus"></i> {{localize "DND5E.Add"}}
+                                    </a>
+                                    {{/if}}
                                 </div>
                             </h3>
                                 <ol class="items-list">
@@ -321,11 +392,11 @@
                                             <div class="item-detail spell-uses">Uses {{item.system.uses.value}} / {{item.system.uses.max}}</div>
                                             {{/if}}
                                         </div>
-                            
-                            
-                            
-                                        {{#if ../../owner}}
+
                                         <div class="item-controls">
+                                            
+                                            {{#if ../../owner}}
+                                        
                                             {{#if section.canPrepare}}
                                             <a class="item-control item-toggle {{item.toggleClass}}" title="{{item.toggleTitle}}"><i class="fas fa-sun"></i></a>
                                             {{/if}}

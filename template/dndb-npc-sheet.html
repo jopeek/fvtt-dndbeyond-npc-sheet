@@ -166,7 +166,8 @@
                 <div class="actions">
                     <div id="traits-list-left">
                         <h3>Biography</h3>
-                        {{editor content=system.details.biography.value target="system.details.biography.value" button=true owner=owner editable=editable}}
+                        {{editor biographyHTML target="system.details.biography.value" button=true editable=editable
+                     engine="prosemirror" collaborate=false}}
                     </div>
                 </div> <!-- actions -->
             </div> <!-- section left -->

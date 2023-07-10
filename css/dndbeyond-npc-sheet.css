@@ -305,6 +305,10 @@
     .dndb-npc-sheet .stat-block.wide .section-left {
         margin-right: 1.5%;
     }
+
+    .dndb-npc-sheet.sheet.actor .editor.prosemirror {
+        min-height: 200px;;
+    }
     
     .dndb-npc-sheet .stat-block.wide .section-right {
         margin-left: 1.5%;

@@ -9,7 +9,7 @@
                     <div class="creature-heading-left"><img class="profile" src="{{actor.img}}" title="{{actor.name}}" data-edit="img"/></div>
                     <div class="creature-heading-right">
                         <h1 id="monster-name"><input name="name" type="text" value="{{actor.name}}" placeholder="{{ localize 'DND5E.Name' }}"/></h1>
-                        <h2 id="monster-type">{{lookup config.actorSizes system.traits.size}}, {{labels.type}}, {{system.details.alignment}}, {{system.details.source}}</h2>
+                        <h2 id="monster-type">{{lookup config.actorSizes system.traits.size}}, {{labels.type}}, {{system.details.alignment}}, {{system.details.source.label}}</h2>
                         <svg height="5" width="100%" class="tapered-rule">
                             <polyline points="0,0 400,2.5 0,5"></polyline>
                         </svg>
@@ -36,7 +36,7 @@
                         <polyline points="0,0 400,2.5 0,5"></polyline>
                     </svg>
                     <div class="scores" data-tab="attributes">
-                        {{#each system.abilities as |ability id|}}
+                        {{#each abilities as |ability id|}}
                             <div class="ability" data-ability="{{id}}">
                                 <h4 class="ability-name rollable">{{id}}</h4>
                                 <p>{{ability.value}} ({{numberFormat ability.mod decimals=0 sign=true}})</p>
@@ -52,8 +52,8 @@
                                 <h4>Saving Throws</h4> 
                                 <p>
                                     {{#each abilities as |ability id|}}
-                                    <li class="skill flexrow {{#if skill.value}}proficient{{/if}}" data-skill="{{s}}">
-                                        <span class="ability-name ability-mod rollable">{{ability.label}}</span> (<span class="skill-mod ability-save">{{numberFormat ability.save decimals=0 sign=true}}</span>) 
+                                    <li class="skill flexrow {{#if skill.value}}proficient{{/if}}" data-ability="{{id}}">
+                                        <span class="ability-name rollable">{{ability.label}}</span> (<span class="skill-mod ability-save">{{numberFormat ability.save decimals=0 sign=true}}</span>) 
                                     </li>
                                     {{/each}}
                                 </p>

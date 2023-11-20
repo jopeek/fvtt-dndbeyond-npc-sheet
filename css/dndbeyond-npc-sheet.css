@@ -306,8 +306,12 @@
         margin-right: 1.5%;
     }
 
+    .dndb-npc-sheet.sheet.actor .editor {
+        min-height: 3rem;
+    }
+
     .dndb-npc-sheet.sheet.actor .editor.prosemirror {
-        min-height: 200px;;
+        min-height: 200px;
     }
     
     .dndb-npc-sheet .stat-block.wide .section-right {

@@ -581,6 +581,7 @@
     
     .dndb-npc-sheet.sheet.actor .inventory-list .item-summary {
         border-top: 0px;
+        display: contents;
     }
     
     .dndb-npc-sheet.sheet .item-buttons {
